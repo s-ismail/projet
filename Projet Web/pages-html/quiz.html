@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site web personnel</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>bonjour!</h1>
+        <img src="../images/IMG_20240115_200634.jpg" height="300" width="*250">
+     </header>
+     <nav>
+        <a href="../index.html">acceuil</a>
+        <a href="parcours.html">parcours-académiques</a>
+        <a href="competences.html">compétences-informatiques</a>
+        <a href="stages.html">stages-réalisés</a>
+        <a href="manifestations.html">manifestations-réalisées</a>
+        <a href="matières.html">matiéres-projets</a>
+        <a href="passion.html">passion-activités-qualité</a>
+        <a href="quiz.html">quiz</a>
+        <a href="contact.html">contacter-moi</a>
+     </nav>
+
+     <form id="quizForm">
+        <div class="question">
+          <label>1. Qu'est-ce que HTML?</label><br>
+          <input type="radio" name="q1" value="a"> HyperText Markup Language<br>
+          <input type="radio" name="q1" value="b"> High-Level Text Markup Language<br>
+          <input type="radio" name="q1" value="c"> HyperTransfer Markup Language
+        </div>
+    
+        <div class="question">
+          <label>2. Quelle est la propriété CSS pour changer la couleur du texte?</label><br>
+          <input type="radio" name="q2" value="a"> color<br>
+          <input type="radio" name="q2" value="b"> text-color<br>
+          <input type="radio" name="q2" value="c"> font-color
+        </div>
+    
+        <div class="question">
+          <label>3. Quel est le langage de programmation côté client le plus couramment utilisé?</label><br>
+          <input type="radio" name="q3" value="a"> Java<br>
+          <input type="radio" name="q3" value="b"> Python<br>
+          <input type="radio" name="q3" value="c"> JavaScript
+        </div>
+
+        <div class="question">
+            <label>4. Quelle balise HTML est utilisée pour créer une liste ordonnée?</label><br>
+            <input type="radio" name="q4" value="a"> &lt;ul&gt;<br>
+            <input type="radio" name="q4" value="b"> &lt;ol&gt;<br>
+            <input type="radio" name="q4" value="c"> &lt;li&gt;
+          </div>
+          
+          <div class="question">
+            <label>5. Quelle propriété CSS est utilisée pour définir la taille de la police?</label><br>
+            <input type="radio" name="q5" value="a"> font-size<br>
+            <input type="radio" name="q5" value="b"> text-size<br>
+            <input type="radio" name="q5" value="c"> size
+          </div>
+          
+          <div class="question">
+            <label>6. Quel événement JavaScript est déclenché lorsqu'un formulaire est soumis?</label><br>
+            <input type="radio" name="q6" value="a"> onsubmit<br>
+            <input type="radio" name="q6" value="b"> onclick<br>
+            <input type="radio" name="q6" value="c"> onformsubmit
+          </div>
+          
+          <div class="question">
+            <label>7. Quelle méthode JavaScript est utilisée pour ajouter un élément à la fin d'un tableau?</label><br>
+            <input type="radio" name="q7" value="a"> push()<br>
+            <input type="radio" name="q7" value="b"> append()<br>
+            <input type="radio" name="q7" value="c"> addToEnd()
+          </div>
+
+          <div class="question">
+            <label>8. Quel sélecteur CSS est utilisé pour sélectionner tous les éléments avec une classe spécifique?</label><br>
+            <input type="radio" name="q8" value="a"> #<br>
+            <input type="radio" name="q8" value="b"> .<br>
+            <input type="radio" name="q8" value="c"> @
+          </div>
+          
+          <div class="question">
+            <label>9. Quel est le résultat de l'expression JavaScript `3 + "3"`?</label><br>
+            <input type="radio" name="q9" value="a"> 6<br>
+            <input type="radio" name="q9" value="b"> "33"<br>
+            <input type="radio" name="q9" value="c"> 33
+          </div>
+          
+          <div class="question">
+            <label>10. Quelle méthode JavaScript est utilisée pour convertir une chaîne en nombre entier?</label><br>
+            <input type="radio" name="q10" value="a"> parseInt()<br>
+            <input type="radio" name="q10" value="b"> toInteger()<br>
+            <input type="radio" name="q10" value="c"> parseNumber()
+          </div>
+          
+          <div class="question">
+            <label>11. Quelle balise HTML est utilisée pour inclure du JavaScript externe?</label><br>
+            <input type="radio" name="q11" value="a"> &lt;script&gt;<br>
+            <input type="radio" name="q11" value="b"> &lt;js&gt;<br>
+            <input type="radio" name="q11" value="c"> &lt;javascript&gt;
+          </div>
+          
+    
+        <button type="button" onclick="calculateScore()">Valider</button>
+      </form>
+    
+      <div id="result"></div>
+    
+      <script>
+        function calculateScore() {
+          const correctAnswers = ['a', 'a', 'c', 'b', 'a', 'a', 'b', 'b', 'a', 'a'];
+          const totalQuestions = correctAnswers.length;
+          const form = document.getElementById('quizForm');
+          const resultContainer = document.getElementById('result');
+          let score = 0;
+          let userAnswers = [];
+      
+          for (let i = 1; i <= totalQuestions; i++) {
+            const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (selectedAnswer) {
+              userAnswers.push(selectedAnswer.value);
+              if (selectedAnswer.value === correctAnswers[i - 1]) {
+                score++;
+              }
+            }
+          }
+      
+          resultContainer.innerHTML = `<p>Votre note est ${score} sur ${totalQuestions}.</p>`;
+          
+          if (userAnswers.length > 0) {
+            resultContainer.innerHTML += `<p>Réponses correctes : ${correctAnswers.join(', ')}</p>`;
+            resultContainer.style.color = 'green';
+          } else {
+            resultContainer.innerHTML = 'Veuillez répondre à toutes les questions.';
+            resultContainer.style.color = 'red';
+          }
+        }
+      </script>
+    
+
+     <footer>
+        <h3>réseaux sociaux</h3>
+        <a href="https://www.facebook.com/ismail.soussi.710"><img src="../images/facebook.png"></a>
+        <a href="https://www.instagram.com/soussiismail/"><img src="../images/instagram.jfif"></a>
+     </footer>
+</body>
+</html>
